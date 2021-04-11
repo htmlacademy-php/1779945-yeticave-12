@@ -46,6 +46,24 @@ $lots = [
     ]
 ];
 ?>
+
+
+<?php
+function money($ruble)
+{
+    if ($ruble < 1000) {
+        return $ruble . '₽';
+    } elseif ($ruble >= 1000) {
+        return number_format($ruble, 0, ',', ' ') . '₽';
+    }
+
+}
+
+$ruble = ceil(222);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -134,8 +152,9 @@ $lots = [
                                                       href="pages/lot.html"><?= $lot['Название'] ?></a></h3>
                             <div class="lot__state">
                                 <div class="lot__rate">
+
                                     <span class="lot__amount">Стартовая цена</span>
-                                    <span class="lot__cost"><?= $lot['Цена'] ?><b class="rub">р</b></span>
+                                    <span class="lot__cost"><?= money($ruble) ?></span>
                                 </div>
                                 <div class="lot__timer timer">
                                     12:23
