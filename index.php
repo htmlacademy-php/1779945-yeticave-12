@@ -1,39 +1,45 @@
 <?php
 $is_auth = rand(0, 1);
-$category = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 $user_name = 'Вадим';
 $lots = [
-    ['Название' => '2014 Rossignol District Snowboard',
+    [
+        'Название' => '2014 Rossignol District Snowboard',
         'Категория' => 'Доски и лыжи',
         'Цена' => 10999,
         'URL картинка' => 'img/lot-1.jpg'
     ],
 
-    ['Название' => 'DC Ply Mens 2016/2017 Snowboard',
+    [
+        'Название' => 'DC Ply Mens 2016/2017 Snowboard',
         'Категория' => 'Доски и лыжи',
         'Цена' => 159999,
         'URL картинка' => 'img/lot-2.jpg'
     ],
 
-    ['Название' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+    [
+        'Название' => 'Крепления Union Contact Pro 2015 года размер L/XL',
         'Категория' => 'Крепления',
         'Цена' => 8000,
         'URL картинка' => 'img/lot-3.jpg'
     ],
 
-    ['Название' => 'Ботинки для сноуборда DC Mutiny Charocal',
+    [
+        'Название' => 'Ботинки для сноуборда DC Mutiny Charocal',
         'Категория' => 'Ботинки',
         'Цена' => 10999,
         'URL картинка' => 'img/lot-4.jpg'
     ],
 
-    ['Название' => 'Куртка для сноуборда DC Mutiny Charocal',
+    [
+        'Название' => 'Куртка для сноуборда DC Mutiny Charocal',
         'Категория' => 'Одежда',
         'Цена' => 7500,
         'URL картинка' => 'img/lot-5.jpg'
     ],
 
-    ['Название' => 'Маска Oakley Canopy',
+    [
+        'Название' => 'Маска Oakley Canopy',
         'Категория' => 'Разное',
         'Цена' => 5400,
         'URL картинка' => 'img/lot-6.jpg'
@@ -100,10 +106,10 @@ $lots = [
                 горнолыжное снаряжение.</p>
             <ul class="promo__list">
                 <?php
-                foreach ($category as $class) {
+                foreach ($categories as $category) {
                     ?>
                     <li class="promo__item promo__item--boards">
-                        <a class="promo__link" href="pages/all-lots.html"><?= ($class) ?></a>
+                        <a class="promo__link" href="pages/all-lots.html"><?= ($category) ?></a>
                     </li>
                     <?php
                 }
@@ -149,10 +155,10 @@ $lots = [
     <nav class="nav">
         <ul class="nav__list container">
             <?php
-            foreach ($category as $class) {
+            foreach ($categories as $category) {
                 ?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?= ($class) ?></a>
+                    <a href="pages/all-lots.html"><?= ($category) ?></a>
                 </li>
                 <?php
             }
