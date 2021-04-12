@@ -49,17 +49,17 @@ $lots = [
 
 
 <?php
-function money($ruble)
+function format_price(int $price): string
 {
-    if ($ruble < 1000) {
-        return $ruble . '₽';
-    } elseif ($ruble >= 1000) {
-        return number_format($ruble, 0, ',', ' ') . '₽';
+    if ($price >= 1000) {
+        return number_format($price, 0, ',', ' ') . '₽';
+    } else {
+        return $price . '₽';
     }
 
 }
 
-$ruble = ceil(222);
+$price = ceil(1230);
 
 ?>
 
@@ -154,7 +154,7 @@ $ruble = ceil(222);
                                 <div class="lot__rate">
 
                                     <span class="lot__amount">Стартовая цена</span>
-                                    <span class="lot__cost"><?= money($ruble) ?></span>
+                                    <span class="lot__cost"><?= format_price($price) ?></span>
                                 </div>
                                 <div class="lot__timer timer">
                                     12:23
