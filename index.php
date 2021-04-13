@@ -55,14 +55,13 @@ $lots = [
  */
 function format_price(int $price): string
 {
-    if ($price < 1000) {
+    if ($price < 1000)
+    {
         return $price . '₽';
-    } return number_format($price, 0, ',', ' ') . '₽';
+    }
 
+    return number_format($price, 0, ',', ' ') . '₽';
 }
-
-$price = 1222;
-
 ?>
 
 
