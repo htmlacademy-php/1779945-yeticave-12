@@ -46,6 +46,25 @@ $lots = [
     ]
 ];
 ?>
+
+
+<?php
+/**
+ * @param int $price
+ * @return string
+ */
+function format_price(int $price): string
+{
+    if ($price < 1000)
+    {
+        return $price . '₽';
+    }
+
+    return number_format($price, 0, ',', ' ') . '₽';
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -134,8 +153,9 @@ $lots = [
                                                       href="pages/lot.html"><?= $lot['Название'] ?></a></h3>
                             <div class="lot__state">
                                 <div class="lot__rate">
+
                                     <span class="lot__amount">Стартовая цена</span>
-                                    <span class="lot__cost"><?= $lot['Цена'] ?><b class="rub">р</b></span>
+                                    <span class="lot__cost"><?= format_price($lot['Цена']) ?></span>
                                 </div>
                                 <div class="lot__timer timer">
                                     12:23
