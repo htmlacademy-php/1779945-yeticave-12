@@ -113,7 +113,6 @@ function format_price(int $price): string
                 }
                 ?>
 
-                <!-- здесь должен быть PHP код для показа меню и данных пользователя -->
 
             </nav>
         </div>
