@@ -1,8 +1,12 @@
 <?php
 require_once('helpers.php');
+
 $is_auth = rand(0, 1);
+
 $categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+
 $user_name = 'Вадим';
+
 $lots = [
     [
         'Название' => '2014 Rossignol District Snowboard',
@@ -46,10 +50,8 @@ $lots = [
         'URL картинка' => 'img/lot-6.jpg'
     ]
 ];
-?>
 
 
-<?php
 /**
  * @param int $price
  * @return string
@@ -59,19 +61,15 @@ function format_price(int $price): string
     if ($price < 1000) {
         return $price . '₽';
     }
-
     return number_format($price, 0, ',', ' ') . '₽';
 }
 
-?>
+$title = 'Аукцион Yeticave';
 
-<?php $title = 'Аукцион Yeticave'; ?>
+$content = include_template('main.php', ['categories' => $categories, 'lots' => $lots]);
 
-<?php
-$content = include_template('main.php', ['categories' => $categories, 'lots' => $lots]); ?>
-
-<?php
 $template = include_template('layout.php', ['content' => $content, 'categories' => $categories, 'is_auth' => $is_auth, 'title' => $title]);
 
 echo $template;
-?>
+
+
