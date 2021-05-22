@@ -9,56 +9,66 @@ $user_name = 'Вадим';
 
 $lots = [
     [
-        'Название' => '2014 Rossignol District Snowboard',
-        'Категория' => 'Доски и лыжи',
-        'Цена' => 10999,
-        'URL картинка' => 'img/lot-1.jpg',
-        $ny_date = strtotime("2021-05-29")
+        'name' => '2014 Rossignol District Snowboard',
+        'category' => 'Доски и лыжи',
+        'price' => 10999,
+        'URL picture' => 'img/lot-1.jpg',
+        'auction_time' => '2021-05-29, 23:59:59'
     ],
 
     [
-        'Название' => 'DC Ply Mens 2016/2017 Snowboard',
-        'Категория' => 'Доски и лыжи',
-        'Цена' => 159999,
-        'URL картинка' => 'img/lot-2.jpg',
-        $ny_date = strtotime("2021-05-25")
+        'name' => 'DC Ply Mens 2016/2017 Snowboard',
+        'category' => 'Доски и лыжи',
+        'price' => 159999,
+        'URL picture' => 'img/lot-2.jpg',
+        'auction_time' => '2021-05-24, 23:59:59'
     ],
 
     [
-        'Название' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-        'Категория' => 'Крепления',
-        'Цена' => 8000,
-        'URL картинка' => 'img/lot-3.jpg',
-        $ny_date = strtotime("2021-05-22")
+        'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+        'category' => 'Крепления',
+        'price' => 8000,
+        'URL picture' => 'img/lot-3.jpg',
+        'auction_time' => '2021-05-30, 23:59:59'
     ],
 
     [
-        'Название' => 'Ботинки для сноуборда DC Mutiny Charocal',
-        'Категория' => 'Ботинки',
-        'Цена' => 10999,
-        'URL картинка' => 'img/lot-4.jpg',
-        $ny_date = strtotime("2021-05-21")
+        'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
+        'category' => 'Ботинки',
+        'price' => 10999,
+        'URL picture' => 'img/lot-4.jpg',
+        'auction_time' => '2021-05-27, 23:59:59'
     ],
 
     [
-        'Название' => 'Куртка для сноуборда DC Mutiny Charocal',
-        'Категория' => 'Одежда',
-        'Цена' => 7500,
-        'URL картинка' => 'img/lot-5.jpg',
-        $ny_date = strtotime("2021-05-28")
+        'name' => 'Куртка для сноуборда DC Mutiny Charocal',
+        'category' => 'Одежда',
+        'price' => 7500,
+        'URL picture' => 'img/lot-5.jpg',
+        'auction_time' => '2021-05-28, 23:59:59'
     ],
 
     [
-        'Название' => 'Маска Oakley Canopy',
-        'Категория' => 'Разное',
-        'Цена' => 5400,
-        'URL картинка' => 'img/lot-6.jpg',
-        $ny_date = strtotime("2021-05-26")
+        'name' => 'Маска Oakley Canopy',
+        'category' => 'Разное',
+        'price' => 5400,
+        'URL picture' => 'img/lot-6.jpg',
+        'auction_time' => '2021-05-22, 22:14:59'
     ]
 ];
 
+function time_left($lots)
+{
+    $i = strtotime(date('Y-m-d H:i:s'));
 
+    $time = abs(strtotime($lots['auction_time']) - $i);
 
+    $hours = floor($time / 60 / 60);
+
+    $minutes = ($time / 60) % 60;
+
+    return [$hours, $minutes];
+}
 
 /**
  * @param int $price
