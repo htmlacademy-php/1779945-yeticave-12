@@ -12,60 +12,69 @@ $lots = [
         'name' => '2014 Rossignol District Snowboard',
         'category' => 'Доски и лыжи',
         'price' => 10999,
-        'URL picture' => 'img/lot-1.jpg',
-        'auction_time' => '2021-05-29, 23:59:59'
+        'URL image' => 'img/lot-1.jpg',
+        'auction_time' => '2021-06-02, 23:59:59'
     ],
 
     [
         'name' => 'DC Ply Mens 2016/2017 Snowboard',
         'category' => 'Доски и лыжи',
         'price' => 159999,
-        'URL picture' => 'img/lot-2.jpg',
-        'auction_time' => '2021-05-24, 23:59:59'
+        'URL image' => 'img/lot-2.jpg',
+        'auction_time' => '2021-06-03, 23:59:59'
     ],
 
     [
         'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
         'category' => 'Крепления',
         'price' => 8000,
-        'URL picture' => 'img/lot-3.jpg',
-        'auction_time' => '2021-05-30, 23:59:59'
+        'URL image' => 'img/lot-3.jpg',
+        'auction_time' => '2021-05-31, 23:59:59'
     ],
 
     [
         'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
         'category' => 'Ботинки',
         'price' => 10999,
-        'URL picture' => 'img/lot-4.jpg',
-        'auction_time' => '2021-05-27, 23:59:59'
+        'URL image' => 'img/lot-4.jpg',
+        'auction_time' => '2021-06-01, 23:59:59'
     ],
 
     [
         'name' => 'Куртка для сноуборда DC Mutiny Charocal',
         'category' => 'Одежда',
         'price' => 7500,
-        'URL picture' => 'img/lot-5.jpg',
-        'auction_time' => '2021-05-28, 23:59:59'
+        'URL image' => 'img/lot-5.jpg',
+        'auction_time' => '2021-06-05, 23:59:59'
     ],
 
     [
         'name' => 'Маска Oakley Canopy',
         'category' => 'Разное',
         'price' => 5400,
-        'URL picture' => 'img/lot-6.jpg',
-        'auction_time' => '2021-05-22, 22:14:59'
+        'URL image' => 'img/lot-6.jpg',
+        'auction_time' => '2021-05-27,23:59:59'
     ]
 ];
 
-function time_left($lots)
-{
-    $i = strtotime(date('Y-m-d H:i:s'));
 
-    $time = abs(strtotime($lots['auction_time']) - $i);
+/**
+ * Функция подсчитывает оставшееся время на покупку снаряжения
+ * @param array $date_time дата в виде массива
+ * @return array|int[] выводит количество часов и минут до окончания лота
+ */
+function time_left(array $date_time)
+{
+    $present_time = time() + (24 * 60 * 60);
+
+    $time = (strtotime($date_time['auction_time']) - $present_time);
+    if ($time <= 0) {
+        return [0, 0];
+    }
 
     $hours = floor($time / 60 / 60);
 
-    $minutes = ($time / 60) % 60;
+    $minutes = floor($time / 60) % 60;
 
     return [$hours, $minutes];
 }
