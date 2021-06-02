@@ -13,7 +13,7 @@ $lots = [
         'category' => 'Доски и лыжи',
         'price' => 10999,
         'URL image' => 'img/lot-1.jpg',
-        'auction_time' => '2021-06-02, 23:59:59'
+        'auction_time' => '2021-06-22'
     ],
 
     [
@@ -21,7 +21,7 @@ $lots = [
         'category' => 'Доски и лыжи',
         'price' => 159999,
         'URL image' => 'img/lot-2.jpg',
-        'auction_time' => '2021-06-03, 23:59:59'
+        'auction_time' => '2021-06-15'
     ],
 
     [
@@ -29,7 +29,7 @@ $lots = [
         'category' => 'Крепления',
         'price' => 8000,
         'URL image' => 'img/lot-3.jpg',
-        'auction_time' => '2021-05-31, 23:59:59'
+        'auction_time' => '2021-06-11'
     ],
 
     [
@@ -37,7 +37,7 @@ $lots = [
         'category' => 'Ботинки',
         'price' => 10999,
         'URL image' => 'img/lot-4.jpg',
-        'auction_time' => '2021-06-01, 23:59:59'
+        'auction_time' => '2021-06-01'
     ],
 
     [
@@ -45,7 +45,7 @@ $lots = [
         'category' => 'Одежда',
         'price' => 7500,
         'URL image' => 'img/lot-5.jpg',
-        'auction_time' => '2021-06-05, 23:59:59'
+        'auction_time' => '2021-06-05'
     ],
 
     [
@@ -53,26 +53,26 @@ $lots = [
         'category' => 'Разное',
         'price' => 5400,
         'URL image' => 'img/lot-6.jpg',
-        'auction_time' => '2021-05-27,23:59:59'
+        'auction_time' => '2021-06-27'
     ]
 ];
 
 
 /**
  * Функция подсчитывает оставшееся время на покупку снаряжения
- * @param array $date_time дата в виде массива
- * @return array|int[] выводит количество часов и минут до окончания лота
+ * @param string $date_time дата в виде строки
+ * @return int[] выводит количество часов и минут до окончания лота
  */
-function time_left(array $date_time)
+function time_left(string $date_time) :array
 {
-    $present_time = time() + (24 * 60 * 60);
+    $present_time = time();
 
-    $time = (strtotime($date_time['auction_time']) - $present_time);
+    $time = (strtotime($date_time) - $present_time);
     if ($time <= 0) {
         return [0, 0];
     }
 
-    $hours = floor($time / 60 / 60);
+    $hours = floor($time / 3600);
 
     $minutes = floor($time / 60) % 60;
 
