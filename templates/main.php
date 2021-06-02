@@ -39,8 +39,8 @@
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost"><?= format_price($lot['price']) ?></span>
                         </div>
-                        <div class="lot__timer timer <?php if (time_left($lot)[0] == 0) echo "timer--finishing"; ?>">
-                            <?= time_left($lot['auction_time'])[0] ?>:<?= time_left($lot['auction_time'])[0] ?>
+                        <div class="lot__timer timer <?php if (time_left($lot['auction_time'])[0] == 0) echo "timer--finishing"; ?>">
+                            <?= time_left($lot['auction_time'])[0] ?>:<?= time_left($lot['auction_time'])[1] ?>
                         </div>
                     </div>
                 </div>
