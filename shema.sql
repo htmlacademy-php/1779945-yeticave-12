@@ -8,6 +8,42 @@
 CREATE DATABASE IF NOT EXISTS `yeticave` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `yeticave`;
 
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(100) DEFAULT NULL,
+    `email` varchar(100) DEFAULT NULL,
+    `password` varchar(100) DEFAULT NULL,
+    `contact_details` varchar(100) DEFAULT NULL,
+    `creation_time` datetime DEFAULT CURRENT_TIMESTAMP,
+    `lot_id` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `email` (`email`),
+    KEY `FK_users_lots` (`lot_id`),
+    CONSTRAINT `FK_users_lots` FOREIGN KEY (`lot_id`) REFERENCES `lots` (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `categories` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(100) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `lots` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(100) DEFAULT NULL,
+    `description` text NOT NULL,
+    `creation_time` datetime DEFAULT CURRENT_TIMESTAMP,
+    `start_price` int(11) NOT NULL,
+    `end_time` datetime NOT NULL,
+    `category_id` int(11) DEFAULT NULL,
+    `user_id` int(11) DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `FK_lots_categories` (`category_id`),
+    KEY `name` (`name`),
+    KEY `user_id` (`user_id`),
+    CONSTRAINT `FK_lots_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `bets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `creation_time` datetime DEFAULT NULL,
@@ -21,41 +57,9 @@ CREATE TABLE IF NOT EXISTS `bets` (
   CONSTRAINT `FK_bets_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `lots` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `description` text NOT NULL,
-  `creation_time` datetime DEFAULT CURRENT_TIMESTAMP,
-  `start_price` int(11) NOT NULL,
-  `end_time` datetime NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_lots_categories` (`category_id`),
-  KEY `name` (`name`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `FK_lots_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  `contact_details` varchar(100) DEFAULT NULL,
-  `creation_time` datetime DEFAULT CURRENT_TIMESTAMP,
-  `lot_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  KEY `FK_users_lots` (`lot_id`),
-  CONSTRAINT `FK_users_lots` FOREIGN KEY (`lot_id`) REFERENCES `lots` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
