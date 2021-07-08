@@ -17,7 +17,7 @@ $lots = [
         'category' => 'Доски и лыжи',
         'price' => 10999,
         'URL image' => 'img/lot-1.jpg',
-        'auction_time' => '2021-06-22'
+        'auction_time' => '2021-07-22'
     ],
 
     [
@@ -25,7 +25,7 @@ $lots = [
         'category' => 'Доски и лыжи',
         'price' => 159999,
         'URL image' => 'img/lot-2.jpg',
-        'auction_time' => '2021-06-15'
+        'auction_time' => '2021-07-15'
     ],
 
     [
@@ -33,7 +33,7 @@ $lots = [
         'category' => 'Крепления',
         'price' => 8000,
         'URL image' => 'img/lot-3.jpg',
-        'auction_time' => '2021-06-11'
+        'auction_time' => '2021-07-11'
     ],
 
     [
@@ -41,7 +41,7 @@ $lots = [
         'category' => 'Ботинки',
         'price' => 10999,
         'URL image' => 'img/lot-4.jpg',
-        'auction_time' => '2021-06-01'
+        'auction_time' => '2021-07-15'
     ],
 
     [
@@ -49,7 +49,7 @@ $lots = [
         'category' => 'Одежда',
         'price' => 7500,
         'URL image' => 'img/lot-5.jpg',
-        'auction_time' => '2021-06-05'
+        'auction_time' => '2021-07-12'
     ],
 
     [
@@ -57,7 +57,7 @@ $lots = [
         'category' => 'Разное',
         'price' => 5400,
         'URL image' => 'img/lot-6.jpg',
-        'auction_time' => '2021-06-27'
+        'auction_time' => '2021-07-27'
     ]
 ];
 
