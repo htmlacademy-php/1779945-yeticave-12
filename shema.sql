@@ -17,13 +17,13 @@ CREATE TABLE IF NOT EXISTS `users` (
     `creation_time` datetime DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     UNIQUE KEY `email` (`email`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `categories` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
     PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `lots` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -34,13 +34,14 @@ CREATE TABLE IF NOT EXISTS `lots` (
     `end_time` datetime NOT NULL,
     `category_id` int(11) DEFAULT NULL,
     `user_id` int(11) DEFAULT NULL,
+    `image` varchar(50) NOT NULL DEFAULT '',
     PRIMARY KEY (`id`),
     KEY `FK_lots_categories` (`category_id`),
     KEY `name` (`name`),
     KEY `user_id` (`user_id`),
     CONSTRAINT `FK_lots_categories` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
     CONSTRAINT `FK_lots_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `bets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -53,7 +54,8 @@ CREATE TABLE IF NOT EXISTS `bets` (
   KEY `FK_bets_users` (`user_id`),
   CONSTRAINT `FK_bets_lots` FOREIGN KEY (`lot_id`) REFERENCES `lots` (`id`),
   CONSTRAINT `FK_bets_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
