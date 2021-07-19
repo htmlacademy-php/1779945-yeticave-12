@@ -22,8 +22,8 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (6, 'Разное');
 
 INSERT INTO `bets` (`id`, `creation_time`, `user_id`, `lot_id`, `bet_size`) VALUES
-(1, '2021-07-10 12:30:00', 1, 1, 11500),
-(2, '2021-07-11 11:30:00', 2, 1, 11000);
+(1, '2021-07-19 12:30:00', 1, 1, 11500),
+(2, '2021-07-18 11:30:00', 2, 1, 11000);
 
 SELECT * FROM categories;
 
@@ -36,7 +36,7 @@ GROUP BY (lots.id);
 
 SELECT lots.id, lots.name, categories.name
 FROM lots JOIN categories
-N categories.id = lots.category_id
+ON categories.id = lots.category_id
 WHERE lots.id = 2;
 
 UPDATE lots
@@ -48,4 +48,19 @@ FROM bets
 JOIN lots ON bets.lot_id = lots.id
 WHERE lots.id = 1
 ORDER BY bet_size ASC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
