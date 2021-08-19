@@ -1,8 +1,3 @@
-<?php
-require ('connect.php');
-?>
-
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
