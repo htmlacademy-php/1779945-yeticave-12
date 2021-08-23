@@ -1,4 +1,37 @@
 <?php
+
+$mysql = new mysqli ("127.0.0.1", "root", "root", "yeticave");
+$mysql->query("SET NAMES 'utf8'");
+if ($mysql->connect_error) {
+    echo 'Error Number: ' . $mysql->connect_errno . '<br>';
+    echo 'Error: ' . $mysql->connect_error;
+}
+
+
+$result = $mysql->query("SELECT * FROM `lots`");
+$result_lots = $result->fetch_all(MYSQLI_ASSOC);
+
+
+$result_c = $mysql->query("SELECT * FROM `categories`");
+$result_categories = $result_c->fetch_all(MYSQLI_ASSOC);
+
+
+$mysql->close();
+
+function categories_name ($result_categories, $id)
+{
+    foreach ($result_categories as $category) {
+
+        if ($category['id'] === $id) {
+
+            return $category['name'];
+        }
+
+    }
+}
+
+
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -97,9 +130,9 @@ function format_price(int $price): string
 
 $title = 'Аукцион Yeticave';
 
-$content = include_template('main.php', ['categories' => $categories, 'lots' => $lots]);
+$content = include_template('main.php', ['result_categories' => $result_categories, 'result_lots' => $result_lots]);
 
-$template = include_template('layout.php', ['content' => $content, 'categories' => $categories, 'is_auth' => $is_auth, 'title' => $title]);
+$template = include_template('layout.php', ['content' => $content, 'result_categories' => $result_categories, 'is_auth' => $is_auth, 'title' => $title]);
 
 echo $template;
 
